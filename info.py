@@ -12,9 +12,9 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ['API_ID'])
-API_HASH = environ['API_HASH']
-BOT_TOKEN = environ['BOT_TOKEN']
+API_ID = int(environ['API_ID', '11762352'])
+API_HASH = environ['API_HASH', '2903597c04eb4a6d799ff8ffc87d4aac']
+BOT_TOKEN = environ['BOT_TOKEN', '5222423549:AAFpbj40J4lgKgdbGbUl76HqUvFgtScA9DE']
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -23,29 +23,30 @@ PICS = (environ.get('PICS', 'https://telegra.ph/file/7e56d907542396289fee4.jpg h
 PICS_RT = (environ.get('PICS_RT', 'https://telegra.ph/file/e3a501feae65ed0b51699.jpg https://telegra.ph/file/14b65049c09b03da89beb.jpg https://telegra.ph/file/39cc7f6811b9eb7c08434.jpg https://telegra.ph/file/6757fe271072f8ce98a48.jpg https://telegra.ph/file/8d4a3a7df714648008a2e.jpg https://telegra.ph/file/2238ca113432d4dc76d5c.jpg https://telegra.ph/file/6824fd8724bc39c2d3201.jpg https://telegra.ph/file/b4d26aeec88a640e75390.jpg https://telegra.ph/file/5bf5a2e88b3d62710c49a.jpg https://telegra.ph/file/161f17f675ce33fe2aaf2.jpg https://telegra.ph/file/fc0992bdc2dd7853131cb.jpg https://telegra.ph/file/b28f44bbc4a7751d87ec6.jpg https://telegra.ph/file/0d88db8a287787989c3f4.jpg https://telegra.ph/file/cf0abe170787287002199.jpg https://telegra.ph/file/a6bef173cc5f77c28ba3f.jpg https://telegra.ph/file/e33089b087d2b0630b88e.jpg https://telegra.ph/file/d0b39c307ebfed4cad027.jpg https://telegra.ph/file/67fcb4ce59f62a089e3f1.jpg https://telegra.ph/file/e63757069cd67b59f20fd.jpg')).split()
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1395457129 1217260904').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001736811068').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
-auth_channel = environ.get('AUTH_CHANNEL')
+auth_channel = environ.get('AUTH_CHANNEL', '-1001476119723')
 auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Sarathi:1234@cluster0.1xspo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+DATABASE_NAME = environ.get('DATABASE_NAME', "Netflix")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'TeamEvamaria')
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001576358755'))
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'Netflix_Movies_Group')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "False")), False)
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", None)
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
-IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b>Query: {query}</b> \n‌‌‌‌IMDb Data:\n\n🏷 Title: <a href={url}>{title}</a>\n🎭 Genres: {genres}\n📆 Year: <a href={url}/releaseinfo>{year}</a>\n🌟 Rating: <a href={url}/ratings>{rating}</a> / 10")
+IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "〓〓〓 <b><a href='{url}'>{title}</a></b> 
+〓〓〓\n\n⭐ ɪᴍᴅʙ {rating} |⏰ ʀᴜɴ {runtime} ᴍɪɴ | 📆 ʀᴇʟᴇᴀsᴇ ᴅᴀᴛᴇ : {release_date}\n\n𒊹︎︎︎ <code>{genres}</code>\n𒊹︎︎︎ <code>{languages}</code>\n\n⌚️ Yᴇᴀʀ : {year}\n❗ Cᴏᴜɴᴛʀɪᴇs : {countries}\n\n🥳 Powered By @Netflix_Movies_Group")
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
